@@ -1,2 +1,0 @@
--- WalletWise Initial Migration
--- Tables added from V2 onwards
