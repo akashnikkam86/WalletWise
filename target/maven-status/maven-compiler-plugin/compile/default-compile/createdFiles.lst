@@ -1,1 +1,6 @@
+com/walletwise/app/repository/UserRepository.class
+com/walletwise/app/model/User.class
+com/walletwise/app/config/SecurityConfig.class
+com/walletwise/app/service/UserService.class
 com/walletwise/app/WalletWiseApplication.class
+com/walletwise/app/controller/AuthController.class
