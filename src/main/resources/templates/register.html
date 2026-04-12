@@ -11,7 +11,7 @@
         <p th:text="${error}"></p>
     </div>
 
-    <form method="post" action="/register">
+    <form method="post" th:action="@{/register}">
         <label>Username:</label><br>
         <input type="text" name="username" required/><br><br>
 

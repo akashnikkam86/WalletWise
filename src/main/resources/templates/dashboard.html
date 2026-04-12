@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>WalletWise - Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, <span th:text="${username}"></span>!</h1>
+
+    <a href="/expenses/add">+ Add Expense</a>
+    &nbsp;|&nbsp;
+    <a href="/logout">Logout</a>
+
+    <h2>Your Expenses</h2>
+
+    <table border="1">
+        <tr>
+            <th>Date</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Note</th>
+            <th>Action</th>
+        </tr>
+        <tr th:each="expense : ${expenses}">
+            <td th:text="${expense.expenseDate}"></td>
+            <td th:text="${expense.title}"></td>
+            <td th:text="${expense.category}"></td>
+            <td th:text="${expense.amount}"></td>
+            <td th:text="${expense.note}"></td>
+            <td>
+                <form th:action="@{/expenses/delete/{id}(id=${expense.id})}" method="post">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
