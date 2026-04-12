@@ -33,7 +33,29 @@ public class ExpenseService {
         return expenseRepository.findByUserOrderByExpenseDateDesc(user);
     }
 
+    public Expense getExpenseById(Long id) {
+        return expenseRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Expense not found"));
+    }
+
+    public Expense updateExpense(Long id, String title, BigDecimal amount,
+                                 String category, LocalDate expenseDate, String note) {
+        Expense expense = getExpenseById(id);
+        expense.setTitle(title);
+        expense.setAmount(amount);
+        expense.setCategory(category);
+        expense.setExpenseDate(expenseDate);
+        expense.setNote(note);
+        return expenseRepository.save(expense);
+    }
+
     public void deleteExpense(Long id) {
         expenseRepository.deleteById(id);
+    }
+
+    public BigDecimal getTotalExpenses(User user) {
+        return getUserExpenses(user).stream()
+                .map(Expense::getAmount)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 }

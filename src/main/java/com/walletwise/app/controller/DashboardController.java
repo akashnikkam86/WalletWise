@@ -25,6 +25,7 @@ public class DashboardController {
         User user = userService.findByUsername(userDetails.getUsername());
         model.addAttribute("expenses", expenseService.getUserExpenses(user));
         model.addAttribute("username", user.getUsername());
+        model.addAttribute("total", expenseService.getTotalExpenses(user));
         return "dashboard";
     }
 }

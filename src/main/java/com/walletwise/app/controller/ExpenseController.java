@@ -1,5 +1,6 @@
 package com.walletwise.app.controller;
 
+import com.walletwise.app.model.Expense;
 import com.walletwise.app.model.User;
 import com.walletwise.app.service.ExpenseService;
 import com.walletwise.app.service.UserService;
@@ -36,6 +37,24 @@ public class ExpenseController {
                              @RequestParam(required = false) String note) {
         User user = userService.findByUsername(userDetails.getUsername());
         expenseService.addExpense(user, title, amount, category, expenseDate, note);
+        return "redirect:/dashboard";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String showEditPage(@PathVariable Long id, Model model) {
+        Expense expense = expenseService.getExpenseById(id);
+        model.addAttribute("expense", expense);
+        return "edit-expense";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String updateExpense(@PathVariable Long id,
+                                @RequestParam String title,
+                                @RequestParam BigDecimal amount,
+                                @RequestParam String category,
+                                @RequestParam LocalDate expenseDate,
+                                @RequestParam(required = false) String note) {
+        expenseService.updateExpense(id, title, amount, category, expenseDate, note);
         return "redirect:/dashboard";
     }
 
