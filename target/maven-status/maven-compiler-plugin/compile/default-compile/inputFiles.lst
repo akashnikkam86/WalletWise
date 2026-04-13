@@ -1,12 +1,16 @@
 /data/data/com.termux/files/home/WalletWise/src/main/java/com/walletwise/app/WalletWiseApplication.java
 /data/data/com.termux/files/home/WalletWise/src/main/java/com/walletwise/app/config/SecurityConfig.java
 /data/data/com.termux/files/home/WalletWise/src/main/java/com/walletwise/app/controller/AuthController.java
+/data/data/com.termux/files/home/WalletWise/src/main/java/com/walletwise/app/controller/BudgetController.java
 /data/data/com.termux/files/home/WalletWise/src/main/java/com/walletwise/app/controller/DashboardController.java
 /data/data/com.termux/files/home/WalletWise/src/main/java/com/walletwise/app/controller/ExpenseController.java
+/data/data/com.termux/files/home/WalletWise/src/main/java/com/walletwise/app/model/Budget.java
 /data/data/com.termux/files/home/WalletWise/src/main/java/com/walletwise/app/model/Expense.java
 /data/data/com.termux/files/home/WalletWise/src/main/java/com/walletwise/app/model/User.java
+/data/data/com.termux/files/home/WalletWise/src/main/java/com/walletwise/app/repository/BudgetRepository.java
 /data/data/com.termux/files/home/WalletWise/src/main/java/com/walletwise/app/repository/ExpenseRepository.java
 /data/data/com.termux/files/home/WalletWise/src/main/java/com/walletwise/app/repository/UserRepository.java
+/data/data/com.termux/files/home/WalletWise/src/main/java/com/walletwise/app/service/BudgetService.java
 /data/data/com.termux/files/home/WalletWise/src/main/java/com/walletwise/app/service/CustomUserDetailsService.java
 /data/data/com.termux/files/home/WalletWise/src/main/java/com/walletwise/app/service/ExpenseService.java
 /data/data/com.termux/files/home/WalletWise/src/main/java/com/walletwise/app/service/UserService.java

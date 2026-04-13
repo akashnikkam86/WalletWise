@@ -8,7 +8,10 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class ExpenseService {
@@ -57,5 +60,14 @@ public class ExpenseService {
         return getUserExpenses(user).stream()
                 .map(Expense::getAmount)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    public Map<String, BigDecimal> getCategoryWiseSummary(User user) {
+        return getUserExpenses(user).stream()
+                .collect(Collectors.groupingBy(
+                        Expense::getCategory,
+                        LinkedHashMap::new,
+                        Collectors.reducing(BigDecimal.ZERO, Expense::getAmount, BigDecimal::add)
+                ));
     }
 }
