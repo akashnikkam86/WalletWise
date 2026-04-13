@@ -2,38 +2,64 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>WalletWise - Edit Expense</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <h1>Edit Expense</h1>
+<body class="bg-light">
+    <nav class="navbar navbar-dark bg-primary">
+        <div class="container">
+            <span class="navbar-brand">💰 WalletWise</span>
+            <a href="/dashboard" class="btn btn-outline-light btn-sm">Back to Dashboard</a>
+        </div>
+    </nav>
 
-    <form method="post" th:action="@{/expenses/edit/{id}(id=${expense.id})}">
-        <label>Title:</label><br>
-        <input type="text" name="title" th:value="${expense.title}" required/><br><br>
-
-        <label>Amount:</label><br>
-        <input type="number" name="amount" step="0.01" th:value="${expense.amount}" required/><br><br>
-
-        <label>Category:</label><br>
-        <select name="category">
-            <option value="Food" th:selected="${expense.category == 'Food'}">Food</option>
-            <option value="Transport" th:selected="${expense.category == 'Transport'}">Transport</option>
-            <option value="Shopping" th:selected="${expense.category == 'Shopping'}">Shopping</option>
-            <option value="Bills" th:selected="${expense.category == 'Bills'}">Bills</option>
-            <option value="Health" th:selected="${expense.category == 'Health'}">Health</option>
-            <option value="Other" th:selected="${expense.category == 'Other'}">Other</option>
-        </select><br><br>
-
-        <label>Date:</label><br>
-        <input type="date" name="expenseDate" th:value="${expense.expenseDate}" required/><br><br>
-
-        <label>Note:</label><br>
-        <input type="text" name="note" th:value="${expense.note}"/><br><br>
-
-        <button type="submit">Update Expense</button>
-    </form>
-
-    <br>
-    <a href="/dashboard">Cancel</a>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="card shadow">
+                    <div class="card-header bg-warning">
+                        <h5 class="mb-0">Edit Expense</h5>
+                    </div>
+                    <div class="card-body p-4">
+                        <form method="post" th:action="@{/expenses/edit/{id}(id=${expense.id})}">
+                            <div class="mb-3">
+                                <label class="form-label">Title</label>
+                                <input type="text" name="title" class="form-control"
+                                       th:value="${expense.title}" required/>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Amount (₹)</label>
+                                <input type="number" name="amount" step="0.01"
+                                       class="form-control" th:value="${expense.amount}" required/>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Category</label>
+                                <select name="category" class="form-select">
+                                    <option value="Food" th:selected="${expense.category == 'Food'}">Food</option>
+                                    <option value="Transport" th:selected="${expense.category == 'Transport'}">Transport</option>
+                                    <option value="Shopping" th:selected="${expense.category == 'Shopping'}">Shopping</option>
+                                    <option value="Bills" th:selected="${expense.category == 'Bills'}">Bills</option>
+                                    <option value="Health" th:selected="${expense.category == 'Health'}">Health</option>
+                                    <option value="Other" th:selected="${expense.category == 'Other'}">Other</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Date</label>
+                                <input type="date" name="expenseDate" class="form-control"
+                                       th:value="${expense.expenseDate}" required/>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Note (optional)</label>
+                                <input type="text" name="note" class="form-control"
+                                       th:value="${expense.note}"/>
+                            </div>
+                            <button type="submit" class="btn btn-warning w-100">Update Expense</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
